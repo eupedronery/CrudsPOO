@@ -4,10 +4,14 @@
  */
 package pagamentos;
 
-/**
- *
- * @author pedro
- */
-public class PagamentoDAO {
+
+import java.util.List;
+
+public interface PagamentoDAO {
+	
+	void criar(Pagamento ps);
+    List<Pagamento> pesquisarPizzaSalgadaSabor(String sabor);
+    void apagar(Pagamento ps);
+    void atualizar(String saborAntigo, Pagamento ps);
     
 }
