@@ -48,12 +48,12 @@ public class SobremesaDAOImplement implements SobremesaDAO {
 		
 		//INSERT INTO que preenche as informacoes da PIZZASALGADA e o ID da PIZZA
 		
-		String sql = "INSERT INTO PIZZA(ID)"
+		String sql = "INSERT INTO SOBREMESA(ID)"
 				+ "VALUES("+ ps.getId() +")"
 				+ ""
-				+ "INSERT INTO PIZZASALGADA "
-				+ "   (ID_SOBREMESA, SABOR, BORDA, PREÇO) "
-				+ "VALUES ("+ ps.getId() +", '"+ ps.getNome() +"', "+ ps.getPreço() +")";
+				+ "INSERT INTO SOBREMESA "
+				+ "   (ID_SOBREMESA, NOME, VALORTOTAL) "
+				+ "VALUES ("+ ps.getId() +", '"+ ps.getNome() +"', "+ ps.getvalorTotal() +")";
 			
 		try {
 		PreparedStatement pstmt = con.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class SobremesaDAOImplement implements SobremesaDAO {
 
 	//Metodo DAO que realiza o pesquisar
 	@Override
-	public List<Sobremesa> pesquisarPizzaSalgadaSabor(String sabor) {
+	public List<Sobremesa> pesquisar(String sabor) {
 		
 		List<Sobremesa> lista = new ArrayList<>();
 		
