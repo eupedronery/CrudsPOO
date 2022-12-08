@@ -58,7 +58,7 @@ public class PagamentoBoundary extends Application{
 			
 			lbformaPagamento.relocate(30, 80);
 			lbformaPagamento.setStyle("-fx-text-fill: 'white';"
-	                                + "-fx-font-size: 1.em");		
+	                                + "-fx-font-size: 1em");		
                         painel.getChildren().add(lbformaPagamento);
 			
 	                TextformaPagamento.relocate(150, 80);
@@ -98,7 +98,7 @@ public class PagamentoBoundary extends Application{
 			  || TextvalorTotal.getText().isEmpty()))) {
 						
 						
-	            JOptionPane.showMessageDialog(null, "Não deixei campos em branco", "ERRO", JOptionPane.ERROR_MESSAGE);				   
+	            JOptionPane.showMessageDialog(null, "Não deixe nenhum campo em branco", "ERRO", JOptionPane.ERROR_MESSAGE);				   
 					}
 			
 			controle.salvar();
@@ -106,18 +106,12 @@ public class PagamentoBoundary extends Application{
 			controle.pesquisar();
 		});
                 
-		//Botao Pesquisar		
 		btnPesquisar.setOnAction(e ->{	
-			
-			
-		//	String cmd = e.getSource().toString();
-		//	System.out.println(cmd);
 			
 			
 			controle.pesquisar();
 		});
 		
-		//Metodo que vincula os TextFields com os atributos da pizza salgada
 		vincular();
 
 			Scene cena = new Scene(painel, 520, 560);
@@ -125,37 +119,26 @@ public class PagamentoBoundary extends Application{
 			
 			stage.setScene(cena);
 			stage.setFullScreen(false);
-			stage.setTitle("Tela de Sobremesa");
+			stage.setTitle("Tela de Pagamento");
 			stage.show();
 		}
-		
-		//Adição e preparacao da tabela
-		
+				
 		private void prepararTable() {
 			//Insercao das colunas
 			
-			TableColumn<Pagamento, Integer > col1 = new TableColumn<>("ID_SOBREMESA");
+			TableColumn<Pagamento, Integer > col1 = new TableColumn<>("ID_PAGAMENTO");
 			col1.setCellValueFactory(
 					new PropertyValueFactory<Pagamento, Integer>("id"));
 			
 			
-			TableColumn<Pagamento, String  > col2 = new TableColumn<>("NOME");
+			TableColumn<Pagamento, String  > col2 = new TableColumn<>("FORMA_PAGAMENTO");
 			col2.setCellValueFactory(
 					new PropertyValueFactory<Pagamento, String>("nome"));
 		
-			TableColumn<Pagamento, Double  > col4 = new TableColumn<>("PREÇO");
+			TableColumn<Pagamento, Double  > col4 = new TableColumn<>("VALOR_TOTAL");
 			col4.setCellValueFactory(
-					new PropertyValueFactory<Pagamento, Double>("preço"));
+					new PropertyValueFactory<Pagamento, Double>("valorTotal"));
 			
-			TableColumn<Pagamento, String  > col5 = new TableColumn<>("Opções");
-
-			
-
-			
-			
-	        Callback<TableColumn<Pagamento, String>, TableCell<Pagamento, String>> cellFactory
-            = //
-            new Callback<TableColumn<Pagamento, String>, TableCell<Pagamento, String>>() {
         @Override
         public TableCell call(final TableColumn<Pagamento, String> param) {
             final TableCell<Pagamento, String> cell = new TableCell<Pagamento, String>() {
@@ -193,7 +176,6 @@ public class PagamentoBoundary extends Application{
                         	controle.editar();
                         });
                     	
-                    	//Campo FlowPane que exibe os botoes de Apagar e Editar
                     	FlowPane fpanel = new FlowPane();
                     	fpanel.getChildren().addAll(btnApagar, btnEditar);
                         setGraphic(fpanel);
@@ -210,12 +192,10 @@ public class PagamentoBoundary extends Application{
 			
 			tablePagamento.getColumns().clear();
 			tablePagamento.getColumns().addAll(col1, col2, col4, col5);
-			tablePagamento.setItems(controle.getListaPizzaSalgada());	
+			tablePagamento.setItems(controle.getListaformaPagamento());	
 			
 		}
 		
-		//metodo de vinculacao de TextFields e os atributos da pizza salgada
-
 		public void vincular() {
 			
 			StringConverter<? extends Number> converterInteiro =
