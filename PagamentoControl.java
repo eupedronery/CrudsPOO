@@ -21,7 +21,7 @@ public class PagamentoControl {
 	private StringProperty formaPagamento = new SimpleStringProperty("");
         private DoubleProperty valorTotal = new SimpleDoubleProperty(0.0);
 	
-	private PizzaSalgadaDAO pizzasalgadaDAO = new PizzaSalgadaDAOImplement();
+	private PagamentoDAO pagamentoDAO = new PagamentoDAOImplement();
 	
 	private boolean editando = false;
 	private String nomeAntigo = null;
